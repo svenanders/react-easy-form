@@ -18,11 +18,6 @@ class TextInput extends React.Component {
   }
 
   render() {
-    const valueLink = {
-      value: this.context.getFormData(this.props.name),
-      requestChange: (newValue) => this.context.updateFormData(this.props.name, newValue)
-    };
-
     const {disabled, required, type, placeholder, pattern, title, className} = this.props;
     const {id} = this.state;
     return (
@@ -32,7 +27,8 @@ class TextInput extends React.Component {
               pattern={pattern}
               placeholder={placeholder}
               className={className}
-              valueLink={valueLink}
+              value = {this.context.getFormData(this.props.name)}
+              onChange = {(newValue) => this.context.updateFormData(this.props.name, newValue)}
               required={required}
               type={type} />
          );
