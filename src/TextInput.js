@@ -6,7 +6,7 @@ class TextInput extends React.Component {
   constructor(...args) {
     super(...args);
     this.state = {
-      id: this.context.labelId || this.props.id || getNextId('select_')
+      id: this.context.labelId || this.props.id ||  getNextId('select_')
     };
   }
 
@@ -17,50 +17,56 @@ class TextInput extends React.Component {
     }
   }
 
+	handleChange(event){
+		this.context.updateFormData(this.props.name, event.target.value);
+	}
+
   render() {
     const {disabled, required, type, placeholder, pattern, title, className} = this.props;
     const {id} = this.state;
+    console.log(this.context.getFormData(this.props.name));
     return (
-       <input disabled={disabled}
-              id={id}
-    	        title={title}
-              pattern={pattern}
-              placeholder={placeholder}
-              className={className}
-              value = {this.context.getFormData(this.props.name)}
-              onChange = {(newValue) => this.context.updateFormData(this.props.name, newValue)}
-              required={required}
-              type={type} />
-         );
+			<input disabled={disabled}
+				id={id}
+				title={title}
+				pattern={pattern}
+				placeholder={placeholder}
+				className={className}
+				ref={this.props.name}
+				defaultValue = {this.context.getFormData(this.props.name) }
+				onChange = { this.handleChange.bind(this) }
+				required={required}
+				type={type} />
+    );
   }
 }
 
 TextInput.propTypes = {
-  className: React.PropTypes.string,
-  disabled: React.PropTypes.bool,
-  id: React.PropTypes.string,
-  name: React.PropTypes.string.isRequired,
-  pattern: React.PropTypes.string,
-  placeholder: React.PropTypes.string,
-  required: React.PropTypes.bool,
-  title: React.PropTypes.string,
-  type: (props, propName) => {
-    if (!/email|text|url|password/.test(props[propName])) {
-      return new Error('TextInput type must be one of email, text, url or password.');
-    }
-  }
+	className: React.PropTypes.string,
+	disabled: React.PropTypes.bool,
+	id: React.PropTypes.string,
+	name: React.PropTypes.string.isRequired,
+	pattern: React.PropTypes.string,
+	placeholder: React.PropTypes.string,
+	required: React.PropTypes.bool,
+	title: React.PropTypes.string,
+	type: (props, propName) => {
+		if (!/email|text|url|password/.test(props[propName])) {
+			return new Error('TextInput type must be one of email, text, url or password.');
+		}
+	}
 };
 
 TextInput.defaultProps = {
-  disabled: false,
-  required: false,
-  type: 'text'
+	disabled: false,
+	required: false,
+	type: 'text'
 };
 
 TextInput.contextTypes = {
-  labelId: React.PropTypes.string,
-  updateFormData: React.PropTypes.func,
-  getFormData: React.PropTypes.func
+	labelId: React.PropTypes.string,
+	updateFormData: React.PropTypes.func,
+	getFormData: React.PropTypes.func
 };
 
 export default TextInput;
