@@ -24,7 +24,6 @@ class TextInput extends React.Component {
   render() {
     const {disabled, required, type, placeholder, pattern, title, className} = this.props;
     const {id} = this.state;
-    console.log(this.context.getFormData(this.props.name));
     return (
 			<input disabled={disabled}
 				id={id}
