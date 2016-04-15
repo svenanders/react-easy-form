@@ -545,7 +545,7 @@ module.exports = exports['default'];
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
-  value: true
+	value: true
 });
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -567,92 +567,91 @@ var _getNextId = require('./getNextId');
 var _getNextId2 = _interopRequireDefault(_getNextId);
 
 var TextInput = (function (_React$Component) {
-  _inherits(TextInput, _React$Component);
+	_inherits(TextInput, _React$Component);
 
-  function TextInput() {
-    _classCallCheck(this, TextInput);
+	function TextInput() {
+		_classCallCheck(this, TextInput);
 
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
+		for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+			args[_key] = arguments[_key];
+		}
 
-    _get(Object.getPrototypeOf(TextInput.prototype), 'constructor', this).apply(this, args);
-    this.state = {
-      id: this.context.labelId || this.props.id || (0, _getNextId2['default'])('select_')
-    };
-  }
+		_get(Object.getPrototypeOf(TextInput.prototype), 'constructor', this).apply(this, args);
+		this.state = {
+			id: this.context.labelId || this.props.id || (0, _getNextId2['default'])('select_')
+		};
+	}
 
-  _createClass(TextInput, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {
-      var hasInitialValue = this.context.getFormData(this.props.name) != undefined;
-      if (!hasInitialValue) {
-        this.context.updateFormData(this.props.name, '');
-      }
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var _this = this;
+	_createClass(TextInput, [{
+		key: 'componentDidMount',
+		value: function componentDidMount() {
+			var hasInitialValue = this.context.getFormData(this.props.name) != undefined;
+			if (!hasInitialValue) {
+				this.context.updateFormData(this.props.name, '');
+			}
+		}
+	}, {
+		key: 'handleChange',
+		value: function handleChange(event) {
+			this.context.updateFormData(this.props.name, event.target.value);
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			var _props = this.props;
+			var disabled = _props.disabled;
+			var required = _props.required;
+			var type = _props.type;
+			var placeholder = _props.placeholder;
+			var pattern = _props.pattern;
+			var title = _props.title;
+			var className = _props.className;
+			var id = this.state.id;
 
-      var valueLink = {
-        value: this.context.getFormData(this.props.name),
-        requestChange: function requestChange(newValue) {
-          return _this.context.updateFormData(_this.props.name, newValue);
-        }
-      };
+			console.log(this.context.getFormData(this.props.name));
+			return _react2['default'].createElement('input', { disabled: disabled,
+				id: id,
+				title: title,
+				pattern: pattern,
+				placeholder: placeholder,
+				className: className,
+				ref: this.props.name,
+				defaultValue: this.context.getFormData(this.props.name),
+				onChange: this.handleChange.bind(this),
+				required: required,
+				type: type });
+		}
+	}]);
 
-      var _props = this.props;
-      var disabled = _props.disabled;
-      var required = _props.required;
-      var type = _props.type;
-      var placeholder = _props.placeholder;
-      var pattern = _props.pattern;
-      var title = _props.title;
-      var className = _props.className;
-      var id = this.state.id;
-
-      return _react2['default'].createElement('input', { disabled: disabled,
-        id: id,
-        title: title,
-        pattern: pattern,
-        placeholder: placeholder,
-        className: className,
-        valueLink: valueLink,
-        required: required,
-        type: type });
-    }
-  }]);
-
-  return TextInput;
+	return TextInput;
 })(_react2['default'].Component);
 
 TextInput.propTypes = {
-  className: _react2['default'].PropTypes.string,
-  disabled: _react2['default'].PropTypes.bool,
-  id: _react2['default'].PropTypes.string,
-  name: _react2['default'].PropTypes.string.isRequired,
-  pattern: _react2['default'].PropTypes.string,
-  placeholder: _react2['default'].PropTypes.string,
-  required: _react2['default'].PropTypes.bool,
-  title: _react2['default'].PropTypes.string,
-  type: function type(props, propName) {
-    if (!/email|text|url|password/.test(props[propName])) {
-      return new Error('TextInput type must be one of email, text, url or password.');
-    }
-  }
+	className: _react2['default'].PropTypes.string,
+	disabled: _react2['default'].PropTypes.bool,
+	id: _react2['default'].PropTypes.string,
+	name: _react2['default'].PropTypes.string.isRequired,
+	pattern: _react2['default'].PropTypes.string,
+	placeholder: _react2['default'].PropTypes.string,
+	required: _react2['default'].PropTypes.bool,
+	title: _react2['default'].PropTypes.string,
+	type: function type(props, propName) {
+		if (!/email|text|url|password/.test(props[propName])) {
+			return new Error('TextInput type must be one of email, text, url or password.');
+		}
+	}
 };
 
 TextInput.defaultProps = {
-  disabled: false,
-  required: false,
-  type: 'text'
+	disabled: false,
+	required: false,
+	type: 'text'
 };
 
 TextInput.contextTypes = {
-  labelId: _react2['default'].PropTypes.string,
-  updateFormData: _react2['default'].PropTypes.func,
-  getFormData: _react2['default'].PropTypes.func
+	labelId: _react2['default'].PropTypes.string,
+	updateFormData: _react2['default'].PropTypes.func,
+	getFormData: _react2['default'].PropTypes.func
 };
 
 exports['default'] = TextInput;
