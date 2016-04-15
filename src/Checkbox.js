@@ -16,12 +16,12 @@ class Checkbox extends React.Component {
       this.context.updateFormData(this.props.name, false);
     }
   }
+	
+	handleChange(event){
+		this.context.updateFormData(this.props.name, event.target.value);
+	}
 
   render() {
-    const valueLink = {
-      value: this.context.getFormData(this.props.name),
-      requestChange: (newValue) => this.context.updateFormData(this.props.name, newValue)
-    };
 
     const {id} = this.state;
     const {className, disabled, required, title} = this.props;
@@ -32,7 +32,8 @@ class Checkbox extends React.Component {
             		type="checkbox"
             		title={title}
             		required={required}
-            		checkedLink={valueLink}
+								defaultValue = {this.context.getFormData(this.props.name) }
+								onChange = { this.handleChange.bind(this) }
             	/>
           );
   }

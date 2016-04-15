@@ -49,17 +49,13 @@ var Checkbox = (function (_React$Component) {
       }
     }
   }, {
+    key: 'handleChange',
+    value: function handleChange(event) {
+      this.context.updateFormData(this.props.name, event.target.value);
+    }
+  }, {
     key: 'render',
     value: function render() {
-      var _this = this;
-
-      var valueLink = {
-        value: this.context.getFormData(this.props.name),
-        requestChange: function requestChange(newValue) {
-          return _this.context.updateFormData(_this.props.name, newValue);
-        }
-      };
-
       var id = this.state.id;
       var _props = this.props;
       var className = _props.className;
@@ -73,7 +69,8 @@ var Checkbox = (function (_React$Component) {
         type: 'checkbox',
         title: title,
         required: required,
-        checkedLink: valueLink
+        defaultValue: this.context.getFormData(this.props.name),
+        onChange: this.handleChange.bind(this)
       });
     }
   }]);
@@ -442,17 +439,13 @@ var Select = (function (_React$Component) {
       }
     }
   }, {
+    key: 'handleChange',
+    value: function handleChange(event) {
+      this.context.updateFormData(this.props.name, event.target.value);
+    }
+  }, {
     key: 'render',
     value: function render() {
-      var _this = this;
-
-      var valueLink = {
-        value: this.context.getFormData(this.props.name),
-        requestChange: function requestChange(newValue) {
-          return _this.context.updateFormData(_this.props.name, newValue);
-        }
-      };
-
       var values = this.props.values;
 
       var options = [];
@@ -506,7 +499,8 @@ var Select = (function (_React$Component) {
         'select',
         { className: className,
           disabled: disabled,
-          valueLink: valueLink,
+          defaultValue: this.context.getFormData(this.props.name),
+          onChange: this.handleChange.bind(this),
           id: id },
         options
       );

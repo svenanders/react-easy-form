@@ -21,11 +21,11 @@ class Select extends React.Component {
     }
   }
 
+	handleChange(event){
+		this.context.updateFormData(this.props.name, event.target.value);
+	}
+
   render() {
-    const valueLink = {
-      value: this.context.getFormData(this.props.name),
-      requestChange: (newValue) => this.context.updateFormData(this.props.name, newValue)
-    };
 
     const {values} = this.props;
     let options = [];
@@ -46,7 +46,8 @@ class Select extends React.Component {
     return (
       	<select className={className}
             		disabled={disabled}
-            		valueLink={valueLink}
+								defaultValue = {this.context.getFormData(this.props.name) }
+								onChange = { this.handleChange.bind(this) }
             		id={id}>
                 {options}
       	</select>
