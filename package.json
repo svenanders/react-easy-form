@@ -5,7 +5,7 @@
     "forms",
     "simple"
   ],
-  "version": "15.0.4",
+  "version": "15.0.5",
   "description": "react-easy-form",
   "main": "lib/ReactEasyForm.js",
   "author": "Geoffroy Warin",
