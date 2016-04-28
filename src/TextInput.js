@@ -11,32 +11,33 @@ class TextInput extends React.Component {
   }
 
   componentDidMount() {
-    const hasInitialValue = this.context.getFormData(this.props.name) != undefined;
-    if (!hasInitialValue) {
-      this.context.updateFormData(this.props.name, '');
-    }
+	  const hasInitialValue = this.context.getFormData(this.props.name) != undefined;
+	  if (!hasInitialValue) {
+		  this.context.updateFormData(this.props.name, '');
+	  }
   }
 
-	handleChange(event){
-		this.context.updateFormData(this.props.name, event.target.value);
-	}
+  handleChange(event){
+	  this.context.updateFormData(this.props.name, event.target.value);
+  }
 
   render() {
-    const {disabled, required, type, placeholder, pattern, title, className} = this.props;
-    const {id} = this.state;
-    return (
-			<input disabled={disabled}
-				id={id}
-				title={title}
-				pattern={pattern}
-				placeholder={placeholder}
-				className={className}
-				ref={this.props.name}
-				defaultValue = {this.context.getFormData(this.props.name) }
-				onChange = { this.handleChange.bind(this) }
-				required={required}
-				type={type} />
-    );
+	  const {disabled, required, type, placeholder, pattern, title, className, onChange} = this.props;
+	  const {id} = this.state;
+	  return (
+		  <input disabled={disabled}
+		  id={id}
+		  title={title}
+		  pattern={pattern}
+		  placeholder={placeholder}
+		  onChange ={onChange}
+		  className={className}
+		  ref={this.props.name}
+		  defaultValue = {this.context.getFormData(this.props.name) }
+		  onChange = { this.handleChange.bind(this) }
+		  required={required}
+		  type={type} />
+	  );
   }
 }
 
@@ -45,6 +46,7 @@ TextInput.propTypes = {
 	disabled: React.PropTypes.bool,
 	id: React.PropTypes.string,
 	name: React.PropTypes.string.isRequired,
+	onChange: React.PropTypes.func,
 	pattern: React.PropTypes.string,
 	placeholder: React.PropTypes.string,
 	required: React.PropTypes.bool,
