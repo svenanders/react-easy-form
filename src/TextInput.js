@@ -30,11 +30,10 @@ class TextInput extends React.Component {
 		  title={title}
 		  pattern={pattern}
 		  placeholder={placeholder}
-		  onChange ={onChange}
 		  className={className}
 		  ref={this.props.name}
 		  defaultValue = {this.context.getFormData(this.props.name) }
-		  onChange = { this.handleChange.bind(this) }
+		  onChange = { onChange ? onChange.bind(this) :  this.handleChange.bind(this) }
 		  required={required}
 		  type={type} />
 	  );
