@@ -600,6 +600,7 @@ var TextInput = (function (_React$Component) {
 			var pattern = _props.pattern;
 			var title = _props.title;
 			var className = _props.className;
+			var onChange = _props.onChange;
 			var id = this.state.id;
 
 			return _react2['default'].createElement('input', { disabled: disabled,
@@ -610,7 +611,7 @@ var TextInput = (function (_React$Component) {
 				className: className,
 				ref: this.props.name,
 				defaultValue: this.context.getFormData(this.props.name),
-				onChange: this.handleChange.bind(this),
+				onChange: onChange ? onChange.bind(this) : this.handleChange.bind(this),
 				required: required,
 				type: type });
 		}
@@ -624,6 +625,7 @@ TextInput.propTypes = {
 	disabled: _react2['default'].PropTypes.bool,
 	id: _react2['default'].PropTypes.string,
 	name: _react2['default'].PropTypes.string.isRequired,
+	onChange: _react2['default'].PropTypes.func,
 	pattern: _react2['default'].PropTypes.string,
 	placeholder: _react2['default'].PropTypes.string,
 	required: _react2['default'].PropTypes.bool,
