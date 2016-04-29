@@ -601,19 +601,35 @@ var TextInput = (function (_React$Component) {
 			var title = _props.title;
 			var className = _props.className;
 			var onChange = _props.onChange;
+			var value = _props.value;
 			var id = this.state.id;
 
-			return _react2['default'].createElement('input', { disabled: disabled,
-				id: id,
-				title: title,
-				pattern: pattern,
-				placeholder: placeholder,
-				className: className,
-				ref: this.props.name,
-				defaultValue: this.context.getFormData(this.props.name),
-				onChange: onChange ? onChange.bind(this) : this.handleChange.bind(this),
-				required: required,
-				type: type });
+			if (value !== "") {
+				return _react2['default'].createElement('input', { disabled: disabled,
+					id: id,
+					title: title,
+					pattern: pattern,
+					placeholder: placeholder,
+					className: className,
+					ref: this.props.name,
+					value: this.props.value,
+					defaultValue: this.context.getFormData(this.props.name),
+					onChange: onChange ? onChange.bind(this) : this.handleChange.bind(this),
+					required: required,
+					type: type });
+			} else {
+				return _react2['default'].createElement('input', { disabled: disabled,
+					id: id,
+					title: title,
+					pattern: pattern,
+					placeholder: placeholder,
+					className: className,
+					ref: this.props.name,
+					defaultValue: this.context.getFormData(this.props.name),
+					onChange: onChange ? onChange.bind(this) : this.handleChange.bind(this),
+					required: required,
+					type: type });
+			}
 		}
 	}]);
 
@@ -627,6 +643,7 @@ TextInput.propTypes = {
 	name: _react2['default'].PropTypes.string.isRequired,
 	onChange: _react2['default'].PropTypes.func,
 	pattern: _react2['default'].PropTypes.string,
+	value: _react2['default'].PropTypes.string,
 	placeholder: _react2['default'].PropTypes.string,
 	required: _react2['default'].PropTypes.bool,
 	title: _react2['default'].PropTypes.string,

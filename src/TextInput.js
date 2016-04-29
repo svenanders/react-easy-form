@@ -22,8 +22,25 @@ class TextInput extends React.Component {
   }
 
   render() {
-	  const {disabled, required, type, placeholder, pattern, title, className, onChange} = this.props;
+	  const {disabled, required, type, placeholder, pattern, title, className, onChange, value} = this.props;
 	  const {id} = this.state;
+
+	  if(value!== ""){
+	   return (
+		  <input disabled={disabled}
+		  id={id}
+		  title={title}
+		  pattern={pattern}
+		  placeholder={placeholder}
+		  className={className}
+		  ref={this.props.name}
+		  value={this.props.value}
+		  defaultValue = {this.context.getFormData(this.props.name) }
+		  onChange = { onChange ? onChange.bind(this) :  this.handleChange.bind(this) }
+		  required={required}
+		  type={type} />
+	  );
+	  } else {
 	  return (
 		  <input disabled={disabled}
 		  id={id}
@@ -37,6 +54,7 @@ class TextInput extends React.Component {
 		  required={required}
 		  type={type} />
 	  );
+	  }
   }
 }
 
@@ -47,6 +65,7 @@ TextInput.propTypes = {
 	name: React.PropTypes.string.isRequired,
 	onChange: React.PropTypes.func,
 	pattern: React.PropTypes.string,
+	value: React.PropTypes.string,
 	placeholder: React.PropTypes.string,
 	required: React.PropTypes.bool,
 	title: React.PropTypes.string,
