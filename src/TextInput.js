@@ -22,10 +22,11 @@ class TextInput extends React.Component {
   }
 
   render() {
-	  const {disabled, required, type, placeholder, pattern, title, className, onChange, value} = this.props;
+	  const {disabled, required, type, placeholder, 
+		  pattern, title, className, onChange, value, controlled} = this.props;
 	  const {id} = this.state;
-
-	  if(value!== ""){
+	
+	if(controlled){
 	   return (
 		  <input disabled={disabled}
 		  id={id}
