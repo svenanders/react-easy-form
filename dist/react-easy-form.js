@@ -577,11 +577,6 @@ var TextInput = (function (_React$Component) {
 	}
 
 	_createClass(TextInput, [{
-		key: 'componentWillReceiveProps',
-		value: function componentWillReceiveProps(props) {
-			console.log(props);
-		}
-	}, {
 		key: 'componentDidMount',
 		value: function componentDidMount() {
 			var hasInitialValue = this.context.getFormData(this.props.name) != undefined;
@@ -619,7 +614,6 @@ var TextInput = (function (_React$Component) {
 					className: className,
 					ref: this.props.name,
 					value: this.props.value,
-					defaultValue: this.context.getFormData(this.props.name),
 					onChange: onChange ? onChange.bind(this) : this.handleChange.bind(this),
 					required: required,
 					type: type });

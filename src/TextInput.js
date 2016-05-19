@@ -10,11 +10,6 @@ class TextInput extends React.Component {
 		};
 	}
 
-	componentWillReceiveProps(props){
-		console.log(props);
-
-	}
-
 	componentDidMount() {
 		const hasInitialValue = this.context.getFormData(this.props.name) != undefined;
 		if (!hasInitialValue) {
@@ -41,7 +36,6 @@ class TextInput extends React.Component {
 					className={className}
 					ref={this.props.name}
 					value={this.props.value}
-					defaultValue = {this.context.getFormData(this.props.name) }
 					onChange = { onChange ? onChange.bind(this) :  this.handleChange.bind(this) }
 					required={required}
 					type={type} />
