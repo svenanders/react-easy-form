@@ -577,6 +577,11 @@ var TextInput = (function (_React$Component) {
 	}
 
 	_createClass(TextInput, [{
+		key: 'componentWillReceiveProps',
+		value: function componentWillReceiveProps(props) {
+			console.log(props);
+		}
+	}, {
 		key: 'componentDidMount',
 		value: function componentDidMount() {
 			var hasInitialValue = this.context.getFormData(this.props.name) != undefined;
