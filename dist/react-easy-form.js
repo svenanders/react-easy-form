@@ -185,6 +185,7 @@ var Form = (function (_React$Component) {
     key: '_onSubmit',
     value: function _onSubmit(event) {
       event.preventDefault();
+
       this.props.onSubmit(this.state.formData);
       return false;
     }
@@ -626,7 +627,7 @@ var TextInput = (function (_React$Component) {
 					className: className,
 					ref: this.props.name,
 					defaultValue: this.context.getFormData(this.props.name),
-					onChange: onChange ? onChange.bind(this) : this.handleChange.bind(this),
+					onChange: this.handleChange.bind(this),
 					required: required,
 					type: type });
 			}

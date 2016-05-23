@@ -42,6 +42,7 @@ class Form extends React.Component {
 
   _onSubmit(event) {
     event.preventDefault();
+	
     this.props.onSubmit(this.state.formData);
     return false;
   }
