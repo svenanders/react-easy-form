@@ -21,6 +21,11 @@ class TextInput extends React.Component {
 		this.context.updateFormData(this.props.name, event.target.value);
 	}
 
+	controlledChange(onChangeEvent){
+		onChangeEvent.bind(this);
+		this.handleChange.bind(this)
+	}
+	
 	render() {
 		const {disabled, required, type, placeholder, 
 			pattern, title, className, onChange, value, controlled} = this.props;
@@ -36,7 +41,7 @@ class TextInput extends React.Component {
 					className={className}
 					ref={this.props.name}
 					value={this.props.value}
-					onChange = { onChange ? onChange.bind(this) :  this.handleChange.bind(this) }
+					onChange = { onChange ? this.controlledChange.bind(this, onChange) :  this.handleChange.bind(this) }
 					required={required}
 					type={type} />
 				);
