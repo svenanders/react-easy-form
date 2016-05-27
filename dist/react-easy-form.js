@@ -621,7 +621,7 @@ var TextInput = (function (_React$Component) {
 					className: className,
 					ref: this.props.name,
 					value: this.props.value,
-					onKeyUp: this.onKeyUp,
+					onKeyUp: onKeyUp,
 					onChange: this.handleChange.bind(this),
 					required: required,
 					type: type });
@@ -632,7 +632,7 @@ var TextInput = (function (_React$Component) {
 					pattern: pattern,
 					placeholder: placeholder,
 					className: className,
-					onKeyUp: this.onKeyUp,
+					onKeyUp: onKeyUp,
 					ref: this.props.name,
 					defaultValue: this.context.getFormData(this.props.name),
 					onChange: this.handleChange.bind(this),
@@ -651,6 +651,7 @@ TextInput.propTypes = {
 	id: _react2['default'].PropTypes.string,
 	name: _react2['default'].PropTypes.string.isRequired,
 	onChange: _react2['default'].PropTypes.func,
+	onKeyUp: _react2['default'].PropTypes.func,
 	pattern: _react2['default'].PropTypes.string,
 	value: _react2['default'].PropTypes.string,
 	placeholder: _react2['default'].PropTypes.string,
@@ -666,6 +667,7 @@ TextInput.propTypes = {
 TextInput.defaultProps = {
 	disabled: false,
 	required: false,
+	onKeyUp: function onKeyUp() {},
 	type: 'text'
 };
 
