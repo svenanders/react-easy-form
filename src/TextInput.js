@@ -41,8 +41,9 @@ class TextInput extends React.Component {
 					className={className}
 					ref={this.props.name}
 					value={this.props.value}
-					onChange = { onChange ? this.controlledChange.bind(this, onChange) :  this.handleChange.bind(this) }
-					required={required}
+				  onKeyUp = {this.onChange.bind(this) }
+				  onChange = { this.handleChange.bind(this) }
+				  required={required}
 					type={type} />
 				);
 			} else {
@@ -53,6 +54,7 @@ class TextInput extends React.Component {
 					pattern={pattern}
 					placeholder={placeholder}
 					className={className}
+	 			  onKeyUp = {this.onChange.bind(this) }
 					ref={this.props.name}
 					defaultValue = {this.context.getFormData(this.props.name) }
 					onChange = { this.handleChange.bind(this) }
