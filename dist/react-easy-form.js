@@ -621,7 +621,7 @@ var TextInput = (function (_React$Component) {
 					className: className,
 					ref: this.props.name,
 					value: this.props.value,
-					onKeyUp: this.onKeyUp ? this.onKeyUp.bind(this) : null,
+					onKeyUp: this.onKeyUp,
 					onChange: this.handleChange.bind(this),
 					required: required,
 					type: type });
@@ -632,7 +632,7 @@ var TextInput = (function (_React$Component) {
 					pattern: pattern,
 					placeholder: placeholder,
 					className: className,
-					onKeyUp: this.onKeyUp ? this.onKeyUp.bind(this) : null,
+					onKeyUp: this.onKeyUp,
 					ref: this.props.name,
 					defaultValue: this.context.getFormData(this.props.name),
 					onChange: this.handleChange.bind(this),
