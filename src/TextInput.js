@@ -27,7 +27,7 @@ class TextInput extends React.Component {
 	}
 	
 	render() {
-		const {disabled, required, type, placeholder, 
+		const {disabled, required, type, placeholder, name,
 			pattern, title, className, onKeyUp, value, controlled} = this.props;
 			const {id} = this.state;
 
@@ -39,8 +39,8 @@ class TextInput extends React.Component {
 					pattern={pattern}
 					placeholder={placeholder}
 					className={className}
-					ref={this.props.name}
-					value={this.props.value}
+					ref={name}
+					value={value}
 				  onKeyUp = { onKeyUp }
 				  onChange = { this.handleChange.bind(this) }
 				  required={required}
@@ -55,8 +55,8 @@ class TextInput extends React.Component {
 					placeholder={placeholder}
 					className={className}
 	 			  onKeyUp = { onKeyUp }
-					ref={this.props.name}
-					defaultValue = {this.context.getFormData(this.props.name) }
+					ref={name}
+					defaultValue = {this.context.getFormData(name) }
 					onChange = { this.handleChange.bind(this) }
 					required={required}
 					type={type} />

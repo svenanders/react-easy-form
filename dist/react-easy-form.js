@@ -604,6 +604,7 @@ var TextInput = (function (_React$Component) {
 			var required = _props.required;
 			var type = _props.type;
 			var placeholder = _props.placeholder;
+			var name = _props.name;
 			var pattern = _props.pattern;
 			var title = _props.title;
 			var className = _props.className;
@@ -619,8 +620,8 @@ var TextInput = (function (_React$Component) {
 					pattern: pattern,
 					placeholder: placeholder,
 					className: className,
-					ref: this.props.name,
-					value: this.props.value,
+					ref: name,
+					value: value,
 					onKeyUp: onKeyUp,
 					onChange: this.handleChange.bind(this),
 					required: required,
@@ -633,8 +634,8 @@ var TextInput = (function (_React$Component) {
 					placeholder: placeholder,
 					className: className,
 					onKeyUp: onKeyUp,
-					ref: this.props.name,
-					defaultValue: this.context.getFormData(this.props.name),
+					ref: name,
+					defaultValue: this.context.getFormData(name),
 					onChange: this.handleChange.bind(this),
 					required: required,
 					type: type });
