@@ -56,7 +56,7 @@ class TextInput extends React.Component {
 					className={className}
 	 			  onKeyUp = { onKeyUp }
 					ref={name}
-					defaultValue = {this.context.getFormData(name) }
+					defaultValue = { name }
 					onChange = { this.handleChange.bind(this) }
 					required={required}
 					type={type} />
