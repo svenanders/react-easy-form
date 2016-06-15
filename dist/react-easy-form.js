@@ -614,6 +614,7 @@ var TextInput = (function (_React$Component) {
 			var id = this.state.id;
 
 			if (controlled) {
+				console.log(name + ' is controlled');
 				return _react2['default'].createElement('input', { disabled: disabled,
 					id: id,
 					title: title,
@@ -635,7 +636,7 @@ var TextInput = (function (_React$Component) {
 					className: className,
 					onKeyUp: onKeyUp,
 					ref: name,
-					defaultValue: name,
+					defaultValue: this.context.getFormData(name),
 					onChange: this.handleChange.bind(this),
 					required: required,
 					type: type });
