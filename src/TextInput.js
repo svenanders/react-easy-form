@@ -32,7 +32,6 @@ class TextInput extends React.Component {
 			const {id} = this.state;
 
 			if(controlled){
-				console.log(name+' is controlled');
 				return (
 					<input disabled={disabled}
 					id={id}
@@ -40,8 +39,8 @@ class TextInput extends React.Component {
 					pattern={pattern}
 					placeholder={placeholder}
 					className={className}
-					ref={name}
-					value={value}
+					ref={ name }
+					value={ value }
 				  onKeyUp = { onKeyUp }
 				  onChange = { this.handleChange.bind(this) }
 				  required={required}
