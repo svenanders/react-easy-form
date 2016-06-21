@@ -55,7 +55,7 @@ class Form extends React.Component {
 
   render() {
     return (
-      <form ref="form" className={this.props.className} onSubmit={this.onSubmit}>
+      <form ref="form" autoComplete="off" className={this.props.className} onSubmit={this.onSubmit}>
 	       {this.props.children}
       </form>
     );
